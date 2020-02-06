@@ -107,7 +107,7 @@ router.get('/display/:id', (req, res, next) => {
 //  execute the query
 function selectStatement(res, id) {
   //  create a query request
-  let sqlSelect = `select ComplaintNum, FromDate, FromTime, OffenseDesc, DescriptionCd, Borough, PremiseType from Crime.dbo.NewYork where ComplaintNum = ${id}`;
+  let sqlSelect = `select ComplaintNum, Borough, FromDate, FromTime, OffenseDesc, DescriptionCd, PremiseType from Crime.dbo.NewYork where ComplaintNum = ${id}`;
   request = new Request(sqlSelect, (err, rowCount, rows) => {
     if (err) {
       console.log(err);
@@ -189,7 +189,7 @@ function insertStatement(res, crime) {
 
 //  Crime object
 class Crime {
-  constructor(ComplaintNum, FromDate, FromTime, OffenseDesc, DescriptionCd, Borough, PremiseType) {
+  constructor(ComplaintNum, Borough, FromDate, FromTime, OffenseDesc, DescriptionCd, PremiseType) {
     this.ComplaintNum = ComplaintNum;
     this.FromDate = formatDate(FromDate);
     this.FromTime = formatTime(FromTime);
