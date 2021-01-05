@@ -2,6 +2,8 @@ extends layout
 
 block content
   h1= title
+  a(href='/create/') Create a new Crime
+  
   form(method='post', action='/' )
     h3 Enter number of records
     input(name='count', value=count)
@@ -23,5 +25,5 @@ block content
         td= crime.DescriptionCd
         td= crime.PremiseType
         td
-          a(href='/edit/') Edit | 
-          a(href='/delete/') Delete
+          a(href='/edit/'  +crime.ComplaintNum) Edit | 
+          a(href='/delete/'+crime.ComplaintNum) Delete
